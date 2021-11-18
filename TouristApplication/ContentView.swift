@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import MapKit
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -19,7 +20,7 @@ struct ContentView: View {
     var body: some View {
         List {
             ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                Text("Testing \(item.timestamp!, formatter: itemFormatter)")
             }
             .onDelete(perform: deleteItems)
         }
