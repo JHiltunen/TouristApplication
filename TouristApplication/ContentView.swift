@@ -8,8 +8,8 @@ struct ContentView: View {
             List {
                 ForEach(viewModel.places, id: \.self) { place in
                     HStack {
-                        Text(place.data.name)
-                        Text(place.data.description.intro)
+                        Text(place.id)
+                        Text(place.description.intro)
                     }
                 }
             }
