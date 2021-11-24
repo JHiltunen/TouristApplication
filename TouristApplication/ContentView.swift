@@ -8,16 +8,21 @@ struct ContentView: View {
             List {
                 ForEach(viewModel.places, id: \.self) { place in
                     HStack {
-                        Text(place.id)
-                        Text(place.description.intro)
+                        Text(place.name.en ?? "No name available")
+                    }
+                }
+                if viewModel.placesListFull == false {
+                    HStack {
+                        Text("Loading... ")
+                        ProgressView()
+                            .onAppear(perform: {
+                                self.viewModel.fetch()
+                            })
                     }
                 }
             }
-            .navigationTitle("Places")
-            .onAppear {
-                viewModel.fetch()
-            }
         }
+        .navigationTitle("Places")
     }
 }
 
