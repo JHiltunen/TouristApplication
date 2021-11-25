@@ -8,10 +8,13 @@ struct ContentView: View {
             List {
                 ForEach(viewModel.places, id: \.self) { place in
                     HStack {
-                        Text(place.name.en ?? "No name available")
+                        // if no english name fallback to finnish name
+                        Text(place.name.en ?? place.name.fi ?? "No name available")
                     }
                 }
+                // if list of pages isn't full
                 if viewModel.placesListFull == false {
+                    // Render spinner to indicate loading more places is in progress
                     HStack {
                         Text("Loading... ")
                         ProgressView()
