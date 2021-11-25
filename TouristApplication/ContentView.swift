@@ -12,12 +12,13 @@ struct ContentView: View {
                         Text(place.name.en ?? place.name.fi ?? "No name available")
                     }
                 }
-                // if list of pages isn't full
+                // if list of places isn't full
                 if viewModel.placesListFull == false {
                     // Render spinner to indicate loading more places is in progress
                     HStack {
                         Text("Loading... ")
                         ProgressView()
+                            // perform the fetch when ProgressView appears
                             .onAppear(perform: {
                                 self.viewModel.fetch()
                             })
