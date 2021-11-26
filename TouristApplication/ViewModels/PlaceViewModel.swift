@@ -1,3 +1,5 @@
+import SwiftUI
+
 class PlaceViewModel: ObservableObject {
     // Tells if all records have been loaded. (Used to hide/show activity spinner)
     var placesListFull = false
