@@ -82,18 +82,12 @@ class PlaceViewModel: ObservableObject {
     
     func fetch() {
         // url to fetch
-        //let tagsForSearch: String = tags.map {$0.name}.joined(separator: "%2C")
-        //print("tags:", tagsForSearch)
+        let tagsForSearch: String = tags.map {$0.name}.joined(separator: "%2C").replacingOccurrences(of: " ", with: "%2520").replacingOccurrences(of: "é", with: "%C3%A9")
         
-        // not working
-        //guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?limit=5&tags_search=cafés%2Cshops and outlets%2Ccultural history //museums%2Csights%2Cshopping%2Crestaurants%2Csaunas for rent%2Cwellness%2Cvenues%2Cbars and pubs%2Cgalleries%2Cnature%2Csports%2Cactivity //places%2Cnight clubs%2Cstudy%2Cwork%2Cmuseums") else {
-         //   return
-        //}
-        // working url
-        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?limit=\(limit)&start=\(currentPage)") else {
+        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?tags_search=\(tagsForSearch)&limit=\(limit)&start=\(currentPage)") else {
             return
         }
-        //print("request urls", url)
+        print("request url", url)
         // create the task to get data
         let task = URLSession.shared.dataTask(with: url) { [self] data, response, error in
             if let error = error {
