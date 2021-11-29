@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A52E5592754CE9A00D2AF05 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A52E5582754CE9A00D2AF05 /* Tags.swift */; };
+		6A52E55C2754CEBB00D2AF05 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A52E55B2754CEBB00D2AF05 /* PlaceViewModel.swift */; };
+		6A52E55F2754D71400D2AF05 /* HorizontalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A52E55E2754D71400D2AF05 /* HorizontalPickerView.swift */; };
 		6A94AC9D2746802400A2DC48 /* TouristApplicationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A94AC9C2746802400A2DC48 /* TouristApplicationApp.swift */; };
 		6A94AC9F2746802400A2DC48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A94AC9E2746802400A2DC48 /* ContentView.swift */; };
 		6A94ACA12746802800A2DC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A94ACA02746802800A2DC48 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A52E5582754CE9A00D2AF05 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		6A52E55B2754CEBB00D2AF05 /* PlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		6A52E55E2754D71400D2AF05 /* HorizontalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerView.swift; sourceTree = "<group>"; };
 		6A94AC992746802400A2DC48 /* TouristApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A94AC9C2746802400A2DC48 /* TouristApplicationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristApplicationApp.swift; sourceTree = "<group>"; };
 		6A94AC9E2746802400A2DC48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,7 +56,7 @@
 		6A94ACBA2746802900A2DC48 /* TouristApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouristApplicationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A94ACBE2746802900A2DC48 /* TouristApplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristApplicationUITests.swift; sourceTree = "<group>"; };
 		6A94ACC02746802900A2DC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6AB626E6274B8EF800538B2F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Place.swift; path = ../../../Place.swift; sourceTree = "<group>"; };
+		6AB626E6274B8EF800538B2F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A52E55A2754CEBB00D2AF05 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6A52E55B2754CEBB00D2AF05 /* PlaceViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6A52E55D2754D6F100D2AF05 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A52E55E2754D71400D2AF05 /* HorizontalPickerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6A94AC902746802400A2DC48 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +123,8 @@
 		6A94AC9B2746802400A2DC48 /* TouristApplication */ = {
 			isa = PBXGroup;
 			children = (
+				6A52E55D2754D6F100D2AF05 /* Views */,
+				6A52E55A2754CEBB00D2AF05 /* ViewModels */,
 				6AB626E5274B8EDF00538B2F /* Models */,
 				6A94AC9C2746802400A2DC48 /* TouristApplicationApp.swift */,
 				6A94AC9E2746802400A2DC48 /* ContentView.swift */,
@@ -142,6 +166,7 @@
 		6AB626E5274B8EDF00538B2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6A52E5582754CE9A00D2AF05 /* Tags.swift */,
 				6AB626E6274B8EF800538B2F /* Place.swift */,
 			);
 			path = Models;
@@ -276,8 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A52E55F2754D71400D2AF05 /* HorizontalPickerView.swift in Sources */,
 				6A94ACA62746802800A2DC48 /* Persistence.swift in Sources */,
 				6A94ACA92746802800A2DC48 /* TouristApplication.xcdatamodeld in Sources */,
+				6A52E5592754CE9A00D2AF05 /* Tags.swift in Sources */,
+				6A52E55C2754CEBB00D2AF05 /* PlaceViewModel.swift in Sources */,
 				6A94AC9F2746802400A2DC48 /* ContentView.swift in Sources */,
 				6A94AC9D2746802400A2DC48 /* TouristApplicationApp.swift in Sources */,
 				6AB626E7274B8EF800538B2F /* Place.swift in Sources */,
@@ -441,7 +469,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TouristApplication/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TouristApplication/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +490,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TouristApplication/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TouristApplication/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -481,7 +509,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TouristApplicationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,7 +530,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TouristApplicationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
