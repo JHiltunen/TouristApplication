@@ -2,7 +2,7 @@ import SwiftUI
 
 // Based on Jonathan Zufi's custom picker view: https://medium.com/@shrineofapple/a-custom-replacement-for-the-horizontal-pickercontrol-f38fb05d22d5
 // https://github.com/jonathanzufi/CustomPickerSwiftUI
-struct CustomPickerView: View {
+struct HorizontalPickerView: View {
     
     @Binding var selectedIndex: Int
     @State private var currentIndex: Int = 0
@@ -12,7 +12,7 @@ struct CustomPickerView: View {
         _selectedIndex = selectedIndex
     }
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 
@@ -53,11 +53,10 @@ struct CustomPickerView: View {
         }
         .padding()
     }
-    
 }
 
-struct CustomPickerView_Previews: PreviewProvider {
+struct HorizontalPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomPickerView(selectedIndex: .constant(0))
+        HorizontalPickerView(selectedIndex: .constant(0))
     }
 }
