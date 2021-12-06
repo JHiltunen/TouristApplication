@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  TouristApplication
-//
-//  Created by iosdev on 18.11.2021.
-//
-
 import CoreData
 
 struct PersistenceController {

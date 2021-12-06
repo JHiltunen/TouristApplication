@@ -14,7 +14,6 @@ struct TouristApplicationApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            Speech()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
