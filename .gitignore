@@ -1,3 +1,5 @@
 
 TouristApplication.xcodeproj/project.pbxproj
 TouristApplication.xcodeproj/project.xcworkspace/xcuserdata/iosdev.xcuserdatad/UserInterfaceState.xcuserstate
+*.pbxproj
+*.xcuserstate
