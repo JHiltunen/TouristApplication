@@ -45,7 +45,7 @@ struct SpeechRecognitionView: View {
     
     private func recordButton() -> some View {
         Button(action: addItem) {
-            Image(systemName: recording ? "xmark" : "mic.fill")
+            SwiftUI.Image(systemName: recording ? "xmark" : "mic.fill")
                 .font(.system(size: 40))
                 .padding()
         } .foregroundColor(.black)
