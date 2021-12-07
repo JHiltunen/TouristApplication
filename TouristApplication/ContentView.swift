@@ -5,6 +5,7 @@ struct ContentView: View {
     @StateObject var viewModel = PlaceViewModel()
     var body: some View {
         NavigationView {
+            // SpeechRecognitionView()
             List {
                 ForEach(viewModel.places, id: \.self) { place in
                     HStack {
