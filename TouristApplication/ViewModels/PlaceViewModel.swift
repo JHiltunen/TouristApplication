@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 class PlaceViewModel: ObservableObject {
     // Tells if all records have been loaded. (Used to hide/show activity spinner)
@@ -11,11 +12,61 @@ class PlaceViewModel: ObservableObject {
     // every time array is updated -> view is going to know it hast to be update itself
     @Published var places: [Data] = []
     
-    func fetch() {
+    func saveData(context: NSManagedObjectContext) {
+        places.forEach { (place) in
+            // Create placedata
+            let placeData = PlaceData(context: context)
+            placeData.id = place.id
+            placeData.name = place.name.fi
+            placeData.infoUrl = place.infoUrl
+            placeData.openingHoursURL = place.openingHoursURL
+            
+            // create placeName
+            //let placeName = PlaceName(context: context)
+            
+            // create place location
+            let placeLocation = PlaceLocation(context: context)
+            placeLocation.lat = place.location.lat
+            placeLocation.lon = place.location.lon
+            
+            placeData.location = placeLocation
+            
+            // create place address
+            let placeAddress = PlaceAdress(context: context)
+            placeAddress.streetAddress = place.location.address.streetAddress
+            placeAddress.postalCode = place.location.address.postalCode
+            placeAddress.locality = place.location.address.locality
+            placeAddress.neighbourhood = place.location.address.neighbourhood
+            
+            placeLocation.address = placeAddress
+            
+            // create place descripion
+            let placeDescription = PlaceDescription(context: context)
+            placeDescription.intro = place.description.intro
+            placeDescription.body = place.description.body
+            
+            placeData.descriptions = placeDescription
+            
+            // create place tags
+            
+        }
+        
+        // saving all pending data at once----
+        
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+            print("success")
+        }
+        
+    }
+    
+    func fetch(context: NSManagedObjectContext) {
         // url to fetch
         let tagsForSearch: String = tags.map {$0.name}.joined(separator: "%2C").replacingOccurrences(of: " ", with: "%2520").replacingOccurrences(of: "é", with: "%C3%A9")
-        
-        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?tags_search=\(tagsForSearch)&limit=\(limit)&start=\(currentPage)") else {
+        // &limit=\(limit)&start=\(currentPage)
+        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?tags_search=\(tagsForSearch)") else {
             return
         }
         print("request url", url)
@@ -48,7 +99,9 @@ class PlaceViewModel: ObservableObject {
                 let obj = try decoder.decode(Place.self, from: data2)
                 
                 DispatchQueue.main.async {
-                    places.append(contentsOf: obj.data)
+                    //places.append(contentsOf: obj.data)
+                    self.places = obj.data
+                    saveData(context: context)
                     //print("META", obj.tags)
                     //tags.append(contentsOf: obj.tags)
                     //print("Tags", tags)

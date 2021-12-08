@@ -14,6 +14,7 @@
 		6A4D0FD2275FAF0C0012C4F9 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D0FD0275FAF0C0012C4F9 /* Tags.swift */; };
 		6A4D0FD3275FAF0C0012C4F9 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D0FD1275FAF0C0012C4F9 /* Place.swift */; };
 		6A4D0FD6275FAF250012C4F9 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D0FD5275FAF250012C4F9 /* PlaceViewModel.swift */; };
+		6A4D0FDB2760B5ED0012C4F9 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D0FDA2760B5ED0012C4F9 /* ListItemView.swift */; };
 		6A94AC9D2746802400A2DC48 /* TouristApplicationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A94AC9C2746802400A2DC48 /* TouristApplicationApp.swift */; };
 		6A94AC9F2746802400A2DC48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A94AC9E2746802400A2DC48 /* ContentView.swift */; };
 		6A94ACA12746802800A2DC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A94ACA02746802800A2DC48 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		6A4D0FD0275FAF0C0012C4F9 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		6A4D0FD1275FAF0C0012C4F9 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		6A4D0FD5275FAF250012C4F9 /* PlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		6A4D0FDA2760B5ED0012C4F9 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		6A94AC992746802400A2DC48 /* TouristApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A94AC9C2746802400A2DC48 /* TouristApplicationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristApplicationApp.swift; sourceTree = "<group>"; };
 		6A94AC9E2746802400A2DC48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		6A4D0FD72760B5C20012C4F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A4D0FDA2760B5ED0012C4F9 /* ListItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6A94AC902746802400A2DC48 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 		6A94AC9B2746802400A2DC48 /* TouristApplication */ = {
 			isa = PBXGroup;
 			children = (
+				6A4D0FD72760B5C20012C4F9 /* Views */,
 				6A4D0FD4275FAF250012C4F9 /* ViewModels */,
 				6AB626E5274B8EDF00538B2F /* Models */,
 				6A0FAE88275E48160088517D /* SpeechRecognition */,
@@ -313,6 +324,7 @@
 				6A0FAE8C275E48C20088517D /* VisualBarView.swift in Sources */,
 				6A94ACA62746802800A2DC48 /* Persistence.swift in Sources */,
 				6A4D0F9C275F71360012C4F9 /* SpeechRecognitionView.swift in Sources */,
+				6A4D0FDB2760B5ED0012C4F9 /* ListItemView.swift in Sources */,
 				6A4D0FD6275FAF250012C4F9 /* PlaceViewModel.swift in Sources */,
 				6A94ACA92746802800A2DC48 /* TouristApplication.xcdatamodeld in Sources */,
 				6A0FAE8E275E48E00088517D /* MicManager.swift in Sources */,
