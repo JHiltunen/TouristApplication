@@ -6,13 +6,18 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var context
     
     // Fetching Data Fom Core data
-    @FetchRequest(entity: PlaceData.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \PlaceData.name, ascending: true)]) var results: FetchedResults<PlaceData>
+    //@FetchRequest(entity: PlaceData.entity(), sortDescriptors: PlaceSort.default.descriptors) var results: //FetchedResults<PlaceData>
+    
+    @FetchRequest(
+        sortDescriptors: PlaceSort.default.descriptors,
+      animation: .default)
+    private var places: FetchedResults<PlaceData>
     
     var body: some View {
         NavigationView {
             // SpeechRecognitionView()
             
-            if results.isEmpty {
+            if places.isEmpty {
                 ProgressView()
                 // Fetching
                     .onAppear(perform: {
@@ -21,10 +26,10 @@ struct ContentView: View {
                 // when array is clear indicator appears
                 // as a result data is fetched again
             } else {
-                List(results, id: \.self) { data in
+                List(places, id: \.self) { data in
                     ListItemView(fetchedData: data)
                 }
-                .navigationTitle(!results.isEmpty ? "Fetched Core Data" : "Fetched JSON")
+                .navigationTitle(!places.isEmpty ? "Fetched Core Data" : "Fetched JSON")
                 .toolbar{
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
@@ -34,7 +39,7 @@ struct ContentView: View {
                             // Clearing data in core data
                             
                             do {
-                                results.forEach { (place) in
+                                places.forEach { (place) in
                                     context.delete(place)
                                 }
                                 
