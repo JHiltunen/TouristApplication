@@ -13,6 +13,28 @@ struct ContentView: View {
         animation: .default)
     private var places: FetchedResults<PlaceData>
     @State private var selectedSort = PlaceSort.default
+    @State private var searchTerm = ""
+    
+    var searchQuery: Binding<String> {
+      Binding {
+        // 1. Creates a binding on the searchTerm property.
+        searchTerm
+      } set: { newValue in
+        // 2. Whenever searchQuery changes, it updates searchTerm.
+        searchTerm = newValue
+        
+        // 3. If the string is empty, it removes any existing predicate on the fetch. This removes any existing filters and displays the complete list of Places.
+        guard !newValue.isEmpty else {
+          places.nsPredicate = nil
+          return
+        }
+
+        // 4. If the search term isn’t empty, it creates a predicate with the search term as criteria and applies it to the fetch request.
+        places.nsPredicate = NSPredicate(
+          format: "name contains[cd] %@",
+          newValue)
+      }
+    }
     
     var body: some View {
         NavigationView {
@@ -30,6 +52,7 @@ struct ContentView: View {
                 List(places, id: \.self) { data in
                     ListItemView(fetchedData: data)
                 }
+                .searchable(text: searchQuery)
                 .navigationTitle(!places.isEmpty ? "Fetched Core Data" : "Fetched JSON")
                 .toolbar{
                     // 1. Instead of separating ToolbarItem wrappers, it embeds the two views for the toolbar in a ToolbarItemGroup and applies .navigationBarTrailing placement. The ToolbarItemGroup cuts down on a little bit of unnecessary code.
