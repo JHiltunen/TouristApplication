@@ -10,8 +10,9 @@ struct ContentView: View {
     
     @FetchRequest(
         sortDescriptors: PlaceSort.default.descriptors,
-      animation: .default)
+        animation: .default)
     private var places: FetchedResults<PlaceData>
+    @State private var selectedSort = PlaceSort.default
     
     var body: some View {
         NavigationView {
@@ -31,7 +32,17 @@ struct ContentView: View {
                 }
                 .navigationTitle(!places.isEmpty ? "Fetched Core Data" : "Fetched JSON")
                 .toolbar{
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    // 1. Instead of separating ToolbarItem wrappers, it embeds the two views for the toolbar in a ToolbarItemGroup and applies .navigationBarTrailing placement. The ToolbarItemGroup cuts down on a little bit of unnecessary code.
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        // 2. It adds a SortSelectionView as the first toolbar item. Passes in selectedSort property as the binding for the PickerView.
+                        SortSelectionView(
+                            selectedSortItem: $selectedSort,
+                            sorts: PlaceSort.sorts)
+                        // 3. On change of the selected sort, it gets the SortDescriptors from the selected sort and applies them to the fetched friends list.
+                            .onChange(of: selectedSort) { _ in
+                                places.sortDescriptors = selectedSort.descriptors
+                            }
+                        // 4. Inserts the Reload button toolbar element after the Sort view.
                         Button(action: {
                             // by clearing array data...
                             // it will auto fetch data again...
@@ -51,7 +62,6 @@ struct ContentView: View {
                             viewModel.places.removeAll()
                         }, label: {
                             SwiftUI.Image(systemName: "arrow.clockwise.circle")
-                                .font(.title)
                         })
                     }
                 }
