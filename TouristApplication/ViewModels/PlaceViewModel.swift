@@ -45,7 +45,14 @@ class PlaceViewModel: ObservableObject {
             placeData.descriptions = placeDescription
             
             // create place tags
+            let tags: NSSet = []
             
+            for placeTag in place.tags {
+                let tag = PlaceTag(context: context)
+                tag.id = placeTag.id
+                tag.name = placeTag.name
+            }
+            placeData.tags = tags
         }
         
         // saving all pending data at once----
