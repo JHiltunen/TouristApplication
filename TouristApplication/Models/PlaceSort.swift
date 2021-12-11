@@ -24,7 +24,7 @@ struct PlaceSort: Hashable, Identifiable {
         name: "Place name | Ascending",
         // 3. Each SortDescriptor specifies the keypath to sort on and the order in which to sort. Note the new SortDescriptor API introduces the .forward and .reverse enumeration values instead of the old Boolean-based sort direction specifier. Each option has a primary sort descriptor and a second one for cases where the first value is the same, such as when you meet lots of people in the same place.
         descriptors: [
-          SortDescriptor(\PlaceData.name, order: .forward)
+            SortDescriptor(\PlaceData.name, order: .forward)
           //SortDescriptor(\PlaceData.name, order: .forward)
         ]),
         PlaceSort(

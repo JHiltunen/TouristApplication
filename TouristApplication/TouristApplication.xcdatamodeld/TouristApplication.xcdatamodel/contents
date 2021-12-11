@@ -37,11 +37,6 @@
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceAdress" inverseName="location" inverseEntity="PlaceAdress"/>
         <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceData" inverseName="location" inverseEntity="PlaceData"/>
     </entity>
-    <entity name="PlaceName" representedClassName="PlaceName" syncable="YES" codeGenerationType="class">
-        <attribute name="en" optional="YES" attributeType="String"/>
-        <attribute name="fi" optional="YES" attributeType="String"/>
-        <attribute name="sv" optional="YES" attributeType="String"/>
-    </entity>
     <entity name="PlaceTag" representedClassName="PlaceTag" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -59,7 +54,6 @@
         <element name="PlaceDescription" positionX="-9" positionY="45" width="128" height="89"/>
         <element name="PlaceImage" positionX="27" positionY="72" width="128" height="89"/>
         <element name="PlaceLocation" positionX="-27" positionY="36" width="128" height="89"/>
-        <element name="PlaceName" positionX="-9" positionY="54" width="128" height="74"/>
         <element name="PlaceTag" positionX="-18" positionY="18" width="128" height="74"/>
         <element name="Todo" positionX="-63" positionY="-9" width="128" height="74"/>
     </elements>

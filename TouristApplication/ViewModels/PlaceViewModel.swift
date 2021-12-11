@@ -17,12 +17,9 @@ class PlaceViewModel: ObservableObject {
             // Create placedata
             let placeData = PlaceData(context: context)
             placeData.id = place.id
-            placeData.name = place.name.fi
+            placeData.name = place.name.en
             placeData.infoUrl = place.infoUrl
             placeData.openingHoursURL = place.openingHoursURL
-            
-            // create placeName
-            //let placeName = PlaceName(context: context)
             
             // create place location
             let placeLocation = PlaceLocation(context: context)
