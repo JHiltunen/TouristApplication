@@ -37,6 +37,12 @@ struct ContentView: View {
     }
     
     var body: some View {
+        Button("Show all") {
+            places.nsPredicate = nil
+        }
+        Button("Show some") {
+            places.nsPredicate = NSPredicate(format: "any tags.name contains[cd] %@", "saunas for rent")
+        }
         NavigationView {
             // SpeechRecognitionView()
             
