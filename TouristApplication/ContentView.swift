@@ -8,10 +8,15 @@ struct ContentView: View {
     // Fetching Data Fom Core data
     //@FetchRequest(entity: PlaceData.entity(), sortDescriptors: PlaceSort.default.descriptors) var results: //FetchedResults<PlaceData>
     
-    @FetchRequest(
-        sortDescriptors: PlaceSort.default.descriptors,
-        animation: .default)
-    private var places: FetchedResults<PlaceData>
+    // 1. Switches to the new property wrapper @SectionedFetchRequest.
+    @SectionedFetchRequest(
+      // 2. Provides a keypath for your section identifier. Here, you’ll use meetingPlace as the section identifier. The section identifier can be any type you would like, as long as it conforms to Hashable.
+        sectionIdentifier: PlaceSort.default.section,
+      // 3. sortDescriptors and animation stay the same as before.
+      sortDescriptors: PlaceSort.default.descriptors,
+      animation: .default)
+    // 4. Updates the places property to include a generic parameter type for the section. In this case, it is String.
+    private var places: SectionedFetchResults<String, PlaceData>
     @State private var selectedSort = PlaceSort.default
     @State private var searchTerm = ""
     
@@ -50,7 +55,29 @@ struct ContentView: View {
                 // as a result data is fetched again
             } else {
                 List(places, id: \.self) { data in
-                    ListItemView(fetchedData: data)
+                    // 1. It iterates over the sectioned fetch results and performs work on each section.
+                    ForEach(places) { section in
+                      // 2. It creates a Section container view for each result section. It uses a text view with the value of the section ID for display. In this case, it will be the name of the meeting place.
+                      Section(header: Text(section.id)) {
+                        // 3. For each row in the section, it creates a FriendView the same way you did before.
+                        ForEach(section) { friend in
+                          /*NavigationLink {
+                            AddFriendView(friendId: friend.objectID)
+                          } label: {
+                            FriendView(friend: friend)
+                          }*/
+                        }
+                        /*.onDelete { indexSet in
+                          withAnimation {
+                            // 4
+                            viewModel.deleteItem(
+                              for: indexSet,
+                              section: section,
+                              viewContext: viewContext)
+                          }
+                        }*/
+                      }
+                    }
                 }
                 .searchable(text: searchQuery)
                 .navigationTitle(!places.isEmpty ? "Fetched Core Data" : "Fetched JSON")
@@ -63,7 +90,9 @@ struct ContentView: View {
                             sorts: PlaceSort.sorts)
                         // 3. On change of the selected sort, it gets the SortDescriptors from the selected sort and applies them to the fetched friends list.
                             .onChange(of: selectedSort) { _ in
-                                places.sortDescriptors = selectedSort.descriptors
+                                let request = places
+                                request.sectionIdentifier = selectedSort.section
+                                request.sortDescriptors = selectedSort.descriptors
                             }
                         // 4. Inserts the Reload button toolbar element after the Sort view.
                         Button(action: {
