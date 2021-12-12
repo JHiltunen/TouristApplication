@@ -1,20 +1,23 @@
-//
-//  Tags.swift
-//  TouristApplication
-//
-//  Created by iosdev on 26.11.2021.
-//
-
 import SwiftUI
 
-var tags: [Tag] = [Tag(id: "main:239", name: "cafés"), Tag(id: "main:256", name: "shops and outlets"), Tag(id: "main:344", name: "cultural history museums"),
-                   Tag(id: "main:473", name: "sights"), Tag(id: "main:490", name: "shopping"), Tag(id: "main:577", name: "restaurants"),
-                   Tag(id: "main:804", name: "saunas for rent"), Tag(id: "main:864", name: "wellness"), Tag(id: "main:868", name: "venues"),
-                   Tag(id: "main:869", name: "bars and pubs"), Tag(id: "main:915", name: "galleries"), Tag(id: "main:916", name: "nature"),
-                   Tag(id: "main:917", name: "sports"), Tag(id: "main:918", name: "activity places"), Tag(id: "main:919", name: "night clubs"),
-                   Tag(id: "main:920", name: "study"), Tag(id: "main:921", name: "work"), Tag(id: "main:961", name: "museums")]
+var tags: [Tag] = [Tag(id: 0, name: "All"), Tag(id: 1, name: "cafés"), Tag(id: 2, name: "shops and outlets"), Tag(id: 3, name: "cultural history museums"),
+                   Tag(id: 4, name: "sights"), Tag(id: 5, name: "shopping"), Tag(id: 6, name: "restaurants"),
+                   Tag(id: 7, name: "saunas for rent"), Tag(id: 8, name: "wellness"), Tag(id: 9, name: "venues"),
+                   Tag(id: 10, name: "bars and pubs"), Tag(id: 11, name: "galleries"), Tag(id: 12, name: "nature"),
+                   Tag(id: 13, name: "sports"), Tag(id: 14, name: "activity places"), Tag(id: 15, name: "night clubs"),
+                   Tag(id: 16, name: "study"), Tag(id: 17, name: "work"), Tag(id: 18, name: "museums")]
 
 struct Tag: Hashable, Codable {
+    var id: Int
+    var name: String
+    
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+}
+
+struct ApiTag: Hashable, Codable {
     var id: String
     var name: String
     

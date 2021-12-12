@@ -3,44 +3,44 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="PlaceAdress" representedClassName="PlaceAdress" syncable="YES" codeGenerationType="class">
+    <entity name="PlaceAdress" representedClassName="PlaceAdress" syncable="YES">
         <attribute name="locality" optional="YES" attributeType="String"/>
         <attribute name="neighbourhood" optional="YES" attributeType="String"/>
         <attribute name="postalCode" optional="YES" attributeType="String"/>
         <attribute name="streetAddress" optional="YES" attributeType="String"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="address" inverseEntity="PlaceLocation"/>
     </entity>
-    <entity name="PlaceData" representedClassName="PlaceData" syncable="YES" codeGenerationType="class">
+    <entity name="PlaceData" representedClassName="PlaceData" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="infoUrl" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="openingHoursURL" optional="YES" attributeType="String"/>
         <relationship name="descriptions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceDescription" inverseName="place" inverseEntity="PlaceDescription"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceLocation" inverseName="place" inverseEntity="PlaceLocation"/>
-        <relationship name="tags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceTag" inverseName="place" inverseEntity="PlaceTag"/>
+        <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceTag" inverseName="place" inverseEntity="PlaceTag"/>
     </entity>
-    <entity name="PlaceDescription" representedClassName="PlaceDescription" syncable="YES" codeGenerationType="class">
+    <entity name="PlaceDescription" representedClassName="PlaceDescription" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String"/>
         <attribute name="intro" optional="YES" attributeType="String"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceImage" inverseName="image" inverseEntity="PlaceImage"/>
         <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceData" inverseName="descriptions" inverseEntity="PlaceData"/>
     </entity>
-    <entity name="PlaceImage" representedClassName="PlaceImage" syncable="YES" codeGenerationType="class">
+    <entity name="PlaceImage" representedClassName="PlaceImage" syncable="YES">
         <attribute name="copyrightHolder" optional="YES" attributeType="String"/>
         <attribute name="mediaId" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
         <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceDescription" inverseName="images" inverseEntity="PlaceDescription"/>
     </entity>
-    <entity name="PlaceLocation" representedClassName="PlaceLocation" syncable="YES" codeGenerationType="class">
+    <entity name="PlaceLocation" representedClassName="PlaceLocation" syncable="YES">
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="lon" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceAdress" inverseName="location" inverseEntity="PlaceAdress"/>
         <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceData" inverseName="location" inverseEntity="PlaceData"/>
     </entity>
-    <entity name="PlaceTag" representedClassName="PlaceTag" syncable="YES" codeGenerationType="class">
+    <entity name="PlaceTag" representedClassName="PlaceTag" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="place" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceData" inverseName="tags" inverseEntity="PlaceData"/>
+        <relationship name="place" toMany="YES" deletionRule="Nullify" destinationEntity="PlaceData" inverseName="tags" inverseEntity="PlaceData"/>
     </entity>
     <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
