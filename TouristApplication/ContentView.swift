@@ -5,15 +5,15 @@ struct ContentView: View {
     @StateObject var viewModel = PlaceViewModel()
     @Environment(\.managedObjectContext) var context
     
-    // Fetching Data Fom Core data
-    //@FetchRequest(entity: PlaceData.entity(), sortDescriptors: PlaceSort.default.descriptors) var results: //FetchedResults<PlaceData>
+    @State private var selectedSort = PlaceSort.default
+    @State private var searchTerm = ""
+    @State private var selectedIndex: Int = 0
+    @State private var selectedCategory = "All"
     
     @FetchRequest(
         sortDescriptors: PlaceSort.default.descriptors,
         animation: .default)
     private var places: FetchedResults<PlaceData>
-    @State private var selectedSort = PlaceSort.default
-    @State private var searchTerm = ""
     
     var searchQuery: Binding<String> {
       Binding {
@@ -30,23 +30,28 @@ struct ContentView: View {
         }
 
         // 4. If the search term isn’t empty, it creates a predicate with the search term as criteria and applies it to the fetch request.
-        places.nsPredicate = NSPredicate(
-          format: "name contains[cd] %@",
-          newValue)
+          let searchPredicate = NSPredicate(
+            format: "name contains[cd] %@",
+            newValue)
+          let categoryPredicate = NSPredicate(format: "any tags.name contains[cd] %@", selectedCategory)
+        
+          let compound = NSCompoundPredicate(andPredicateWithSubpredicates: [searchPredicate, categoryPredicate])
+          
+          places.nsPredicate = compound
       }
     }
     
     var body: some View {
-        Button("Show all") {
-            places.nsPredicate = nil
-        }
-        Button("Show some") {
-            places.nsPredicate = NSPredicate(format: "any tags.name contains[cd] %@", "saunas for rent")
-        }
+        HorizontalPickerView(selectedIndex: $selectedIndex)
+            .onChange(of: selectedIndex) { V in
+                let selectedTagName = tags[selectedIndex].name
+                selectedCategory = selectedTagName
+                places.nsPredicate = selectedTagName == "All" ? nil : NSPredicate(format: "any tags.name contains[cd] %@", selectedCategory)
+            }
         NavigationView {
             // SpeechRecognitionView()
             
-            if places.isEmpty {
+            if viewModel.places.isEmpty {
                 ProgressView()
                 // Fetching
                     .onAppear(perform: {
@@ -82,13 +87,13 @@ struct ContentView: View {
                                 places.forEach { (place) in
                                     context.delete(place)
                                 }
+                                viewModel.places.removeAll()
                                 
                                 try context.save()
                             } catch {
                                 print(error.localizedDescription)
                             }
                             
-                            viewModel.places.removeAll()
                         }, label: {
                             SwiftUI.Image(systemName: "arrow.clockwise.circle")
                         })

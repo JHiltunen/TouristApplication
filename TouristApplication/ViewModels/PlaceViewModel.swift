@@ -2,8 +2,6 @@ import SwiftUI
 import CoreData
 
 class PlaceViewModel: ObservableObject {
-    // Tells if all records have been loaded. (Used to hide/show activity spinner)
-    var placesListFull = false
     // Tracks last page loaded. Used to load next page (current + 1)
     var currentPage = 0
     // Limit of records per page. (Only if backend supports, it usually does)
@@ -102,21 +100,13 @@ class PlaceViewModel: ObservableObject {
                 
                 DispatchQueue.main.async {
                     //places.append(contentsOf: obj.data)
+                    self.places.removeAll()
                     self.places = obj.data
                     saveData(context: context)
                     //print("META", obj.tags)
                     //tags.append(contentsOf: obj.tags)
                     //print("Tags", tags)
                 }
-                
-                // DispatchQueue.global(qos: Dis)
-                
-                // If count of data received is less than perPage value then it is last page.
-                if obj.data.count < self.limit {
-                    self.placesListFull = true
-                }
-                //                print(obj.data)
-                //print(obj.tags)
                 
                 //for result in obj.data {
 //                    print("ID \(result.id)")

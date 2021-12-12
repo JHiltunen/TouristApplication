@@ -15,7 +15,7 @@ struct Data: Hashable, Codable {
     let infoUrl: String
     let location: Location
     let description: Description
-    let tags: [Tag]
+    let tags: [ApiTag]
     let openingHoursURL: String
     
     private enum CodingKeys:String, CodingKey {
