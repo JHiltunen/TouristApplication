@@ -31,7 +31,7 @@ struct PlaceDetailedView: View {
                 Text(place?.descriptions?.body ?? "No Description available")
                     .font(.body)
                     .padding()
-                MapView()
+                MapView(lat: place?.location?.lat ?? 60.192059, long: place?.location?.lon ?? 24.945831)
             }
         }
     }
