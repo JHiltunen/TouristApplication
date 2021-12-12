@@ -37,7 +37,7 @@ struct ContentView: View {
         
           let compound = NSCompoundPredicate(andPredicateWithSubpredicates: [searchPredicate, categoryPredicate])
           
-          places.nsPredicate = compound
+          places.nsPredicate = selectedCategory == "All" ? searchPredicate : compound
       }
     }
     
