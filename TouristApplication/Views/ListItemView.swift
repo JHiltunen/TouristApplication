@@ -3,21 +3,18 @@ import SwiftUI
 struct ListItemView: View {
     var fetchedData: PlaceData?
     var body: some View {
-        VStack(alignment: .leading, spacing: 10, content: {
-            Text(fetchedData?.name ?? "No name available")
-                .font(.title2)
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-            
-            Text(fetchedData!.infoUrl!)
-                .font(.caption)
-                .fontWeight(.bold)
-                .foregroundColor(.gray)
-            
-            Text(fetchedData!.descriptions!.intro!)
-                .font(.caption)
-                .fontWeight(.bold)
-                .foregroundColor(.gray)
+        NavigationLink(destination: PlaceDetailedView(place: fetchedData), label: {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(fetchedData?.name ?? "No name available")
+                    .font(.title2)
+                    .fontWeight(.heavy)
+                    .foregroundColor(.black)
+                
+                Text(fetchedData!.descriptions!.intro!)
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
+            }
         })
     }
 }

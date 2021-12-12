@@ -40,6 +40,17 @@ class PlaceViewModel: ObservableObject {
             placeDescription.intro = place.description.intro
             placeDescription.body = place.description.body
             
+            // create place images
+            if !place.description.images.isEmpty {
+                for image in place.description.images {
+                    let placeImage = PlaceImage(context: context)
+                    placeImage.copyrightHolder = image.copyrightHolder
+                    placeImage.mediaId = image.mediaId
+                    placeImage.url = image.url
+                    placeDescription.addToImages(placeImage)
+                }
+            }
+            
             placeData.descriptions = placeDescription
             
             // create place tags
