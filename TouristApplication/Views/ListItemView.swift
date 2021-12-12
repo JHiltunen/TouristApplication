@@ -10,11 +10,6 @@ struct ListItemView: View {
                     .fontWeight(.heavy)
                     .foregroundColor(.black)
                 
-                Text(fetchedData!.infoUrl!)
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundColor(.gray)
-                
                 Text(fetchedData!.descriptions!.intro!)
                     .font(.caption)
                     .fontWeight(.bold)

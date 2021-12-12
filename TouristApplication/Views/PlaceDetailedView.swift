@@ -26,9 +26,6 @@ struct PlaceDetailedView: View {
                     Text(place?.location?.address?.locality ?? "No locality available")
                         .font(.subheadline)
                 }
-                Text(place?.descriptions?.intro ?? "No Intro available")
-                    .font(.body)
-                    .padding()
                 Text(place?.descriptions?.body ?? "No Description available")
                     .font(.body)
                     .padding()
