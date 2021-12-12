@@ -11,11 +11,13 @@ struct PlaceDetailedView: View {
     var place: PlaceData?
     var body: some View {
         ScrollView {
+            Text(place?.name ?? "No name available")
+                .font(.title)
+            Spacer()
             VStack(spacing: 15) {
-                AsyncImage(url: URL(string: "https://via.placeholder.com/200"))
-                Spacer()
-                Text(place?.name ?? "No name available")
-                    .font(.title)
+                NavigationLink(place?.infoUrl ?? "No url", destination: {
+                    WebView(url: URL(string: place?.infoUrl ?? "https://www.google.com")!)
+                })
                 HStack {
                     SwiftUI.Image(systemName: "mappin.and.ellipse")
                         .font(.subheadline)
