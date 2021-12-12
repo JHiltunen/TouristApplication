@@ -34,7 +34,7 @@ struct MapView: View {
                 showsUserLocation: true,
                 userTrackingMode: .constant(.follow),
                 annotationItems: [place]) { place in
-                    MapPin(coordinate: place.location, tint: Color.black)
+                    MapPin(coordinate: place.location, tint: Color.red)
                     
             }
                 .onAppear {
