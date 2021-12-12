@@ -25,6 +25,7 @@ struct SpeechRecognitionView: View {
                     .onDelete(perform: deleteItems)
                 }
                 .navigationTitle("Speech to Text")
+                .toolbar { EditButton() }
                 
                 RoundedRectangle(cornerRadius: 25)
                     .fill(Color.primary.opacity(0.5))
@@ -45,8 +46,8 @@ struct SpeechRecognitionView: View {
     
     private func recordButton() -> some View {
         Button(action: addItem) {
-            SwiftUI.Image(systemName: recording ? "xmark" : "mic.fill")
-                .font(.system(size: 40))
+            SwiftUI.Image(systemName: recording ? "xmark" : "mic.circle.fill")
+                .font(.system(size: 50))
                 .padding()
         } .foregroundColor(.black)
     }
