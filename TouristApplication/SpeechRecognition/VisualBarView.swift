@@ -4,6 +4,7 @@ struct VisualBarView: View {
     var value: CGFloat
     let numberOfSamples: Int = 30
     
+    // Sound vizualization
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)

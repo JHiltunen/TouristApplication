@@ -10,6 +10,7 @@ class SpeechManager {
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     
+    // Check authorization to use speech recognition services.
     func checkPermission() {
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             DispatchQueue.main.async {
@@ -22,6 +23,7 @@ class SpeechManager {
         }
     }
     
+    // Start recording
     func start(completion: @escaping ( String?) -> Void) {
         if isRecording {
             stopRecording()
@@ -73,6 +75,7 @@ class SpeechManager {
         }
     }
     
+    // Stop Recording
     func stopRecording() {
         recognitionRequest?.endAudio()
         recognitionRequest = nil

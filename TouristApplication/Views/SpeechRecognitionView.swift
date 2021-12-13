@@ -15,6 +15,7 @@ struct SpeechRecognitionView: View {
     
     private var speechManager = SpeechManager()
     
+    // Speech to text view
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
@@ -27,7 +28,8 @@ struct SpeechRecognitionView: View {
                 .navigationTitle("Speech to Text")
                 .toolbar { EditButton() }
                 
-                RoundedRectangle(cornerRadius: 25)
+                // Style for recording overlay
+                RoundedRectangle(cornerRadius: 20)
                     .fill(Color.primary.opacity(0.5))
                     .padding()
                     .overlay(VStack {
@@ -43,10 +45,10 @@ struct SpeechRecognitionView: View {
             }
     }
 }
-    
+    // Record button to Start and Stop recording
     private func recordButton() -> some View {
         Button(action: addItem) {
-            SwiftUI.Image(systemName: recording ? "xmark" : "mic.circle.fill")
+            SwiftUI.Image(systemName: recording ? "mic.slash.circle" : "mic.circle")
                 .font(.system(size: 50))
                 .padding()
         } .foregroundColor(.black)
@@ -66,7 +68,8 @@ private func visualizerView() -> some View {
         }
     }
 }
-                                  
+             
+    // Save speech items
     private func addItem() {
         if speechManager.isRecording {
             self.recording = false
@@ -102,6 +105,7 @@ private func visualizerView() -> some View {
         speechManager.isRecording.toggle()
     }
 
+    // Delete items from Speech to text
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { todos[$0] }.forEach(viewContext.delete)
@@ -115,6 +119,7 @@ private func visualizerView() -> some View {
     }
 }
 
+// Date formatter
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
