@@ -15,9 +15,12 @@ struct PlaceDetailedView: View {
                 .font(.title)
             Spacer()
             VStack(spacing: 15) {
-                NavigationLink(place?.infoUrl ?? "No url", destination: {
-                    WebView(url: URL(string: place?.infoUrl ?? "https://www.google.com")!)
-                })
+                if !(place?.infoUrl?.isEmpty ?? true) {
+                    NavigationLink(place?.infoUrl ?? "No url", destination: {
+                        WebView(url: URL(string: place?.infoUrl ?? "https://www.google.com")!)
+                    })
+                }
+                
                 HStack {
                     SwiftUI.Image(systemName: "mappin.and.ellipse")
                         .font(.subheadline)
