@@ -1,10 +1,3 @@
-//
-//  ListView.swift
-//  TouristApplication
-//
-//  Created by iosdev on 12.12.2021.
-//
-
 import SwiftUI
 
 struct ListView: View {
@@ -86,18 +79,18 @@ struct ListView: View {
                             // it will auto fetch data again...
                             
                             // Clearing data in core data
-                            
-                            do {
-                                places.forEach { (place) in
-                                    context.delete(place)
+                            DispatchQueue.main.async {
+                                do {
+                                    places.forEach { (place) in
+                                        context.delete(place)
+                                    }
+                                    viewModel.places.removeAll()
+                                    
+                                    try context.save()
+                                } catch {
+                                    print(error.localizedDescription)
                                 }
-                                viewModel.places.removeAll()
-                                
-                                try context.save()
-                            } catch {
-                                print(error.localizedDescription)
                             }
-                            
                         }, label: {
                             SwiftUI.Image(systemName: "arrow.clockwise.circle")
                         })

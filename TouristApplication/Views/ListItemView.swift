@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Represents single item on list
 struct ListItemView: View {
     var fetchedData: PlaceData?
     var body: some View {

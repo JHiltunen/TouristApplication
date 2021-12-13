@@ -2,14 +2,10 @@ import SwiftUI
 import CoreData
 
 class PlaceViewModel: ObservableObject {
-    // Tracks last page loaded. Used to load next page (current + 1)
-    var currentPage = 0
-    // Limit of records per page. (Only if backend supports, it usually does)
-    let limit = 20
-    
-    // every time array is updated -> view is going to know it hast to be update itself
+    // every time array is updated -> view is going to know it has to be update itself
     @Published var places: [Data] = []
     
+    // Function that saves fetched data to CoreData
     func saveData(context: NSManagedObjectContext) {
         places.forEach { (place) in
             // Create placedata
@@ -110,13 +106,9 @@ class PlaceViewModel: ObservableObject {
                 let obj = try decoder.decode(Place.self, from: data2)
                 
                 DispatchQueue.main.async {
-                    //places.append(contentsOf: obj.data)
                     self.places.removeAll()
                     self.places = obj.data
                     saveData(context: context)
-                    //print("META", obj.tags)
-                    //tags.append(contentsOf: obj.tags)
-                    //print("Tags", tags)
                 }
                 
                 //for result in obj.data {
@@ -143,8 +135,6 @@ class PlaceViewModel: ObservableObject {
 //                    }
                 //}
                 
-                currentPage += limit
-                print("currentPage: \(currentPage)")
                 DispatchQueue.main.async {
                     // self.parliamentLabel.text = "\(member[xx])"
                 }

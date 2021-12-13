@@ -1,7 +1,10 @@
 import SwiftUI
 
-// Based on Jonathan Zufi's custom picker view: https://medium.com/@shrineofapple/a-custom-replacement-for-the-horizontal-pickercontrol-f38fb05d22d5
-// https://github.com/jonathanzufi/CustomPickerSwiftUI
+/* Based on Jonathan Zufi's custom picker view: https://medium.com/@shrineofapple/a-custom-replacement-for-the-horizontal-pickercontrol-f38fb05d22d5
+ https://github.com/jonathanzufi/CustomPickerSwiftUI
+ */
+
+// View that shows all categories/tags
 struct HorizontalPickerView: View {
     
     @Binding var selectedIndex: Int
