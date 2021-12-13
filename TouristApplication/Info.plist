@@ -55,5 +55,13 @@
 	<string>Need Microphone for Speech Recognition</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Need Microphone for Speech Recognition</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSLocationUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 </dict>
 </plist>

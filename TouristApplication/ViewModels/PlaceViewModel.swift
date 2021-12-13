@@ -2,14 +2,10 @@ import SwiftUI
 import CoreData
 
 class PlaceViewModel: ObservableObject {
-    // Tracks last page loaded. Used to load next page (current + 1)
-    var currentPage = 0
-    // Limit of records per page. (Only if backend supports, it usually does)
-    let limit = 20
-    
-    // every time array is updated -> view is going to know it hast to be update itself
+    // every time array is updated -> view is going to know it has to be update itself
     @Published var places: [Data] = []
     
+    // Function that saves fetched data to CoreData
     func saveData(context: NSManagedObjectContext) {
         places.forEach { (place) in
             // Create placedata
@@ -77,7 +73,7 @@ class PlaceViewModel: ObservableObject {
         // url to fetch
         let tagsForSearch: String = tags.map {$0.name}.joined(separator: "%2C").replacingOccurrences(of: " ", with: "%2520").replacingOccurrences(of: "é", with: "%C3%A9")
         // &limit=\(limit)&start=\(currentPage)
-        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?tags_search=\(tagsForSearch)") else {
+        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?tags_search=\(tagsForSearch)&language_filter=en") else {
             return
         }
         print("request url", url)
@@ -110,13 +106,9 @@ class PlaceViewModel: ObservableObject {
                 let obj = try decoder.decode(Place.self, from: data2)
                 
                 DispatchQueue.main.async {
-                    //places.append(contentsOf: obj.data)
                     self.places.removeAll()
                     self.places = obj.data
                     saveData(context: context)
-                    //print("META", obj.tags)
-                    //tags.append(contentsOf: obj.tags)
-                    //print("Tags", tags)
                 }
                 
                 //for result in obj.data {
@@ -143,8 +135,6 @@ class PlaceViewModel: ObservableObject {
 //                    }
                 //}
                 
-                currentPage += limit
-                print("currentPage: \(currentPage)")
                 DispatchQueue.main.async {
                     // self.parliamentLabel.text = "\(member[xx])"
                 }

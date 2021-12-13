@@ -1,13 +1,7 @@
-//
-//  WebView.swift
-//  TouristApplication
-//
-//  Created by iosdev on 12.12.2021.
-//
-
 import SwiftUI
 import WebKit
 
+// Handles showing websites in application
 struct WebView: UIViewRepresentable {
     
     var url: URL

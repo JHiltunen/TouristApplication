@@ -1,5 +1,6 @@
 import SwiftUI
 
+// View that shows sort options
 struct SortSelectionView: View {
     
     // 1. Creates a binding for the currently selected sort item.

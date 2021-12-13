@@ -1,12 +1,6 @@
-//
-//  PlaceDetailedView.swift
-//  TouristApplication
-//
-//  Created by iosdev on 12.12.2021.
-//
-
 import SwiftUI
 
+// Shows etailed information of place
 struct PlaceDetailedView: View {
     var place: PlaceData?
     var body: some View {
@@ -15,12 +9,12 @@ struct PlaceDetailedView: View {
                 .font(.title)
             Spacer()
             VStack(spacing: 15) {
+                // Render NavigationLink if there is infoUrl provided on data
                 if !(place?.infoUrl?.isEmpty ?? true) {
                     NavigationLink(place?.infoUrl ?? "No url", destination: {
                         WebView(url: URL(string: place?.infoUrl ?? "https://www.google.com")!)
                     })
                 }
-                
                 HStack {
                     SwiftUI.Image(systemName: "mappin.and.ellipse")
                         .font(.subheadline)

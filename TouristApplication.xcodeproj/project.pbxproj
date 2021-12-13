@@ -151,6 +151,8 @@
 		6A4D0FD72760B5C20012C4F9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A94AC9E2746802400A2DC48 /* ContentView.swift */,
+				6A4D0F9B275F71360012C4F9 /* SpeechRecognitionView.swift */,
 				6A4D0FDA2760B5ED0012C4F9 /* ListItemView.swift */,
 				6A4D0FDE27621B430012C4F9 /* SortSelectionView.swift */,
 				6A8585BC2764FD2700D24305 /* HorizontalPickerView.swift */,
@@ -210,13 +212,11 @@
 				6AB626E5274B8EDF00538B2F /* Models */,
 				6A0FAE88275E48160088517D /* SpeechRecognition */,
 				6A94AC9C2746802400A2DC48 /* TouristApplicationApp.swift */,
-				6A94AC9E2746802400A2DC48 /* ContentView.swift */,
 				6A94ACA02746802800A2DC48 /* Assets.xcassets */,
 				6A94ACA52746802800A2DC48 /* Persistence.swift */,
 				6A94ACAA2746802800A2DC48 /* Info.plist */,
 				6A94ACA72746802800A2DC48 /* TouristApplication.xcdatamodeld */,
 				6A94ACA22746802800A2DC48 /* Preview Content */,
-				6A4D0F9B275F71360012C4F9 /* SpeechRecognitionView.swift */,
 			);
 			path = TouristApplication;
 			sourceTree = "<group>";

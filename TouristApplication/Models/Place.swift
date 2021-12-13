@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Model for API data
 struct Place: Codable, Hashable {
     let meta: Meta
     let data: [Data]

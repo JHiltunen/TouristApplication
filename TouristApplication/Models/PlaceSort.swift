@@ -1,11 +1,6 @@
-//
-//  PlaceSort.swift
-//  TouristApplication
-//
-//  Created by iosdev on 8.12.2021.
-//
-
 import Foundation
+
+// Handles sorting options for data
 
 // 1. Conform to Hashable and Identifiable. This is necessary to use PlaceSort in a SwiftUI view for selecting sorts from a menu.
 struct PlaceSort: Hashable, Identifiable {
@@ -25,28 +20,12 @@ struct PlaceSort: Hashable, Identifiable {
         // 3. Each SortDescriptor specifies the keypath to sort on and the order in which to sort. Note the new SortDescriptor API introduces the .forward and .reverse enumeration values instead of the old Boolean-based sort direction specifier. Each option has a primary sort descriptor and a second one for cases where the first value is the same, such as when you meet lots of people in the same place.
         descriptors: [
             SortDescriptor(\PlaceData.name, order: .forward)
-          //SortDescriptor(\PlaceData.name, order: .forward)
         ]),
         PlaceSort(
         id: 1,
         name: "Place name | Descending",
         descriptors: [
           SortDescriptor(\PlaceData.name, order: .reverse)
-          //SortDescriptor(\PlaceData.name, order: .forward)
-        ]),
-        PlaceSort(
-        id: 2,
-        name: "Meeting Date | Ascending",
-        descriptors: [
-          SortDescriptor(\PlaceData.name, order: .forward),
-          SortDescriptor(\PlaceData.name, order: .forward)
-        ]),
-        PlaceSort(
-        id: 3,
-        name: "Meeting Date | Descending",
-        descriptors: [
-          SortDescriptor(\PlaceData.name, order: .reverse),
-          SortDescriptor(\PlaceData.name, order: .forward)
         ])
     ]
 
