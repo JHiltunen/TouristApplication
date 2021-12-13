@@ -77,7 +77,7 @@ class PlaceViewModel: ObservableObject {
         // url to fetch
         let tagsForSearch: String = tags.map {$0.name}.joined(separator: "%2C").replacingOccurrences(of: " ", with: "%2520").replacingOccurrences(of: "é", with: "%C3%A9")
         // &limit=\(limit)&start=\(currentPage)
-        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?tags_search=\(tagsForSearch)") else {
+        guard let url = URL(string: "http://open-api.myhelsinki.fi/v2/places/?tags_search=\(tagsForSearch)&language_filter=en") else {
             return
         }
         print("request url", url)

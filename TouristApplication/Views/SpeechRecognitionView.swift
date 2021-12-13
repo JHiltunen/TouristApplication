@@ -29,7 +29,7 @@ struct SpeechRecognitionView: View {
                 .toolbar { EditButton() }
                 
                 // Style for recording overlay
-                RoundedRectangle(cornerRadius: 20)
+                Circle()
                     .fill(Color.primary.opacity(0.5))
                     .padding()
                     .overlay(VStack {
